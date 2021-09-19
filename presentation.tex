@@ -1,0 +1,63 @@
+\let\ifsubmission\iftrue
+\let\ifeprint\iffalse
+
+\documentclass[18pt]{beamer}
+
+\input{config/packages}
+\input{config/config}
+\input{config/macros}
+\input{custom_config/macros}
+
+\def\eprinttitle{title}
+\def\submissiontitle{title}
+
+\ifeprint
+    \title{\resizebox{\textwidth}{!}{\eprinttitle}}
+    \subtitle{\small{\submissiontitle}}
+\else
+    \title{\submissiontitle}
+    \subtitle{\small{\eprinttitle}}
+\fi
+
+\date{date}
+
+%\titlerunning{Abbreviated paper title}
+\ifsubmission
+\else
+    \author{
+        author\inst{1}
+        %\and
+        %author2\inst{2}
+    }
+    \authorrunning{author et al.}
+    \institute{
+        institute
+        %\email{}
+    }
+    %\date{\today}
+    %\tocauthor{\relax}
+    %\toctitle{\relax}
+
+    % hyper setup
+    \hypersetup{
+        linktoc=all,
+        pdfauthor={author et al.},
+        pdftitle={\submissiontitle},
+        pdfsubject={},
+        pdfkeywords={}
+    }
+\fi
+
+\addbibresource{cryptobib/abbrev3.bib}
+\addbibresource{cryptobib/crypto.bib}
+\addbibresource{references.bib}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\input{sections/content}
+
+\end{document}
