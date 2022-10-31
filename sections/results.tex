@@ -1,1 +1,24 @@
 \section{Results}
+
+\begin{frame}
+    \frametitle{Result}
+    \begin{block}{Meta-reduction}
+        \small
+        polynomial degree
+        \(\implies\)
+        univariate polynomial assumption is insufficient
+    \end{block}
+
+    \resizebox{\textwidth}{!}{
+        \procedure{Meta-reduction: any \(q\)-size assumption to weak \(Q\)-selective unpredictability}{
+            \mathcal{C} \<\< \mathcal{M} \<\< \mathcal{R} \<\< \mathcal{A} \\
+            \parr{c_0,...,c_Q} \gets C \<\< \<\< x_0,...,x_Q \gets \bit^\secpar \\
+            \< \sendmessageright{length=2cm,top={\(c_0,...,c_q\)}} \<\< \sendmessageright{length=2cm,top={\(c_0,...,c_q\)}} \\
+            \< \<\< \< \vk = \g^{v_1} \< \\
+            \< \<\< \<\< \sendmessageright{length=4cm,top={\(\vk, x_0,...,x_Q, \gimage_1, \gproof_1, ..., \gimage_Q, \gproof_Q\)}} \\
+            \< \<\< \<\< \sendmessageleft{length=4cm,top={\(\gimage_0\)}} \\
+            \< \sendmessageleft{length=2cm,top={\(s\)}} \<\< \sendmessageleft{length=2cm,top={\(s\)}} \\
+            s \text{ is solution ?}
+        }
+    }
+\end{frame}
