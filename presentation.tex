@@ -1,5 +1,6 @@
-\let\ifsubmission\iftrue
+\let\ifsubmission\iffalse
 \let\ifeprint\iffalse
+\let\ifnumeric\iffalse
 
 \documentclass[18pt]{beamer}
 
@@ -8,45 +9,50 @@
 \input{config/macros}
 \input{custom_config/macros}
 
-\def\eprinttitle{title}
-\def\submissiontitle{title}
+\usetikzlibrary{tikzmark}
 
-\ifeprint
-    \title{\resizebox{\textwidth}{!}{\eprinttitle}}
-    \subtitle{\small{\submissiontitle}}
-\else
-    \title{\submissiontitle}
-    \subtitle{\small{\eprinttitle}}
-\fi
+\title{The Price of Verifiability:\\Lower Bounds for Verifiable Random Functions}
+\declarecommand{\submissiontitle}{}
+%\subtitle{\small{\submissiontitle}}
 
-\date{date}
+%\date{date}
 
 %\titlerunning{Abbreviated paper title}
-\ifsubmission
-\else
-    \author{
-        author\inst{1}
-        %\and
-        %author2\inst{2}
-    }
-    \authorrunning{author et al.}
-    \institute{
-        institute
-        %\email{}
-    }
-    %\date{\today}
-    %\tocauthor{\relax}
-    %\toctitle{\relax}
+\author{
+    \setlength{\tabcolsep}{18pt}
+    \begin{tabular}{cc}
+        Nicholas Brandt
+        &
+        Dennis Hofheinz
+        \\
+        Julia Kastner
+        &
+        Akin Ünal
+    \end{tabular}
+}
+\institute{
+    Department of Computer Science \\
+    ETH Zurich\\
+    Zurich, Switzerland \\
+    \texttt{\{nicholas.brandt,hofheinz,julia.kastner,akin.uenal\}@inf.ethz.ch}
+}
+%\date{\today}
+%\tocauthor{\relax}
+%\toctitle{\relax}
 
-    % hyper setup
-    \hypersetup{
-        linktoc=all,
-        pdfauthor={author et al.},
-        pdftitle={\submissiontitle},
-        pdfsubject={},
-        pdfkeywords={}
-    }
-\fi
+% hyper setup
+\hypersetup{
+    linktoc=all,
+    pdfauthor={},
+    pdftitle={},
+    pdfsubject={},
+    pdfkeywords={},
+    unicode=true,
+    pdfstartview=FitH,
+    hidelinks
+}
+
+\beamertemplatenavigationsymbolsempty
 
 \addbibresource{cryptobib/abbrev3.bib}
 \addbibresource{cryptobib/crypto.bib}
@@ -54,10 +60,18 @@
 
 \begin{document}
 
+\normalfont
+
 \begin{frame}
-	\titlepage
+    \titlepage
 \end{frame}
 
-\input{sections/content}
+\input{sections/motivation}
+\input{sections/results}
+\input{sections/summary}
+
+\appendix
+\input{sections/backup}
+\input{sections/references}
 
 \end{document}
