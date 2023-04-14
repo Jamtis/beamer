@@ -1,48 +1,59 @@
-\let\ifsubmission\iftrue
-\let\ifeprint\iffalse
+\let\ifdraft\iffalse
+\let\iffullversion\iffalse
+\let\ifanonymous\iftrue
+
+\input{config/conditionals}
 
 \documentclass[18pt]{beamer}
 
+\usepackage[nopostdot,nomain,acronym,symbols,nogroupskip,nonumberlist]{glossaries} % load before hyperref (otherwise acronyms will link to glossary)
 \input{config/packages}
 \input{config/config}
 \input{config/macros}
 \input{custom_config/macros}
+\input{custom_config/acronyms}
+\input{custom_config/symbols}
 
-\def\eprinttitle{title}
-\def\submissiontitle{title}
+\title{On the Correlation Complexity of MPC\\with Cheater Identification}
 
-\ifeprint
-    \title{\resizebox{\textwidth}{!}{\eprinttitle}}
-    \subtitle{\small{\submissiontitle}}
-\else
-    \title{\submissiontitle}
-    \subtitle{\small{\eprinttitle}}
-\fi
-
-\date{date}
-
-%\titlerunning{Abbreviated paper title}
-\ifsubmission
+\ifanonymous
+    \author{\vspace*{-1cm}}
+    \institute{\vspace*{-1cm}}
 \else
     \author{
-        author\inst{1}
-        %\and
-        %author2\inst{2}
+        Nicholas Brandt\inst{1}
+        \and
+        Sven Maier\inst{2}
+        \and
+        Tobias Müller\inst{3}
+        \and
+        Jörn Müller-Quade\inst{4}
+        \phantom{\thanks{
+            Work done while the first author was supported by ERC Project PREP-CRYPTO 724307,
+            the second author was at the Karlsruhe Institute of Technology, Germany,
+            and the third author was at the FZI Research Center for Information Technology, Germany.
+        }}
     }
-    \authorrunning{author et al.}
+    %\authorrunning{N. Brandt et al.}
     \institute{
-        institute
-        %\email{}
+        ETH Zurich, Zurich, Switzerland,
+        \email{nicholas.brandt@inf.ethz.ch}
+        \and
+        CNRS, IRIF, Université de Paris, France,
+        \email{sven.maier@irif.fr}
+        \and
+        %FZI Research Center for Information Technology, Germany,
+        \email{muellertobias@outlook.de}
+        \and
+        Karlsruhe Institute of Technology, Germany,
+        \email{joern.mueller-quade@kit.edu}
     }
-    %\date{\today}
-    %\tocauthor{\relax}
-    %\toctitle{\relax}
 
     % hyper setup
     \hypersetup{
         linktoc=all,
-        pdfauthor={author et al.},
-        pdftitle={\submissiontitle},
+        pdfauthor={Nicholas Brandt, Sven Maier, Tobias Müller, Jörn Müller-Quade},
+        pdftitle={On the Correlation Complexity of MPC with Cheater Identification},
         pdfsubject={},
         pdfkeywords={}
     }
@@ -53,11 +64,14 @@
 \addbibresource{references.bib}
 
 \begin{document}
+% \setcounter{footnote}{0}
 
+\vspace*{-1cm}
 \begin{frame}
 	\titlepage
 \end{frame}
 
 \input{sections/content}
+\printbibliography
 
 \end{document}
