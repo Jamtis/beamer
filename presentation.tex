@@ -1,56 +1,48 @@
-\let\ifsubmission\iffalse
-\let\ifeprint\iffalse
-\let\ifnumeric\iffalse
+\let\ifdraft\iffalse
+\let\iffullversion\iffalse
+\let\ifanonymous\iffalse
+
+\input{config/conditionals}
 
 \documentclass[18pt]{beamer}
 
+\usepackage[nopostdot,nomain,acronym,symbols,nogroupskip,nonumberlist]{glossaries} % load before hyperref (otherwise acronyms will link to glossary)
 \input{config/packages}
 \input{config/config}
 \input{config/macros}
 \input{custom_config/macros}
+\input{custom_config/acronyms}
+\input{custom_config/symbols}
 
 \usetikzlibrary{tikzmark}
 
-\title{The Price of Verifiability:\\Lower Bounds for Verifiable Random Functions}
-\declarecommand{\submissiontitle}{}
-%\subtitle{\small{\submissiontitle}}
+\title{On the Correlation Complexity of MPC\\with Cheater Identification}
 
-%\date{date}
+\ifanonymous
+    \author{\vspace*{-1cm}}
+    \institute{\vspace*{-1cm}}
+\else
+    \author{
+        author1\inst{1}
+        \phantom{\thanks{
+            Footnote...
+        }}
+    }
+    %\authorrunning{N. Brandt et al.}
+    \institute{
+        Institute
+        \email{e@mail.com}
+    }
 
-%\titlerunning{Abbreviated paper title}
-\author{
-    \setlength{\tabcolsep}{18pt}
-    \begin{tabular}{cc}
-        Nicholas Brandt
-        &
-        Dennis Hofheinz
-        \\
-        Julia Kastner
-        &
-        Akin Ünal
-    \end{tabular}
-}
-\institute{
-    Department of Computer Science \\
-    ETH Zurich\\
-    Zurich, Switzerland \\
-    \texttt{\{nicholas.brandt,hofheinz,julia.kastner,akin.uenal\}@inf.ethz.ch}
-}
-%\date{\today}
-%\tocauthor{\relax}
-%\toctitle{\relax}
-
-% hyper setup
-\hypersetup{
-    linktoc=all,
-    pdfauthor={},
-    pdftitle={},
-    pdfsubject={},
-    pdfkeywords={},
-    unicode=true,
-    pdfstartview=FitH,
-    hidelinks
-}
+    % hyper setup
+    \hypersetup{
+        linktoc=all,
+        pdfauthor={author},
+        pdftitle={title},
+        pdfsubject={},
+        pdfkeywords={}
+    }
+\fi
 
 \beamertemplatenavigationsymbolsempty
 
@@ -59,8 +51,10 @@
 \addbibresource{references.bib}
 
 \begin{document}
+% \setcounter{footnote}{0}
 
 \normalfont
+\vspace*{-1cm}
 
 \begin{frame}
     \titlepage
